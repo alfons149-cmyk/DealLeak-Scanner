@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DealLeak Scanner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">🔍</span>
+        <span class="logo-text">DealLeak <strong>Scanner</strong></span>
+      </div>
+      <p class="tagline">Ontdek waar jij omzet laat liggen in je huidige leads</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Input form -->
+    <section class="card input-card">
+      <h2 class="card-title">Vul jouw gegevens in</h2>
+
+      <form id="scanner-form" novalidate>
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="leads">Aantal leads per maand</label>
+            <div class="input-wrapper">
+              <input
+                type="number"
+                id="leads"
+                name="leads"
+                min="1"
+                placeholder="bijv. 50"
+                required
+              />
+              <span class="input-suffix">leads</span>
+            </div>
+            <span class="field-error" id="leads-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="deal-amount">Gemiddeld dealbedrag</label>
+            <div class="input-wrapper">
+              <span class="input-prefix">€</span>
+              <input
+                type="number"
+                id="deal-amount"
+                name="deal-amount"
+                min="1"
+                placeholder="bijv. 2500"
+                required
+              />
+            </div>
+            <span class="field-error" id="deal-amount-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="follow-up-pct">% dat je nu opvolgt</label>
+            <div class="input-wrapper">
+              <input
+                type="number"
+                id="follow-up-pct"
+                name="follow-up-pct"
+                min="0"
+                max="100"
+                placeholder="bijv. 60"
+                required
+              />
+              <span class="input-suffix">%</span>
+            </div>
+            <span class="field-error" id="follow-up-pct-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="response-time">Gemiddelde responstijd</label>
+            <div class="input-wrapper">
+              <input
+                type="number"
+                id="response-time"
+                name="response-time"
+                min="0"
+                step="0.5"
+                placeholder="bijv. 24"
+                required
+              />
+              <span class="input-suffix">uur</span>
+            </div>
+            <span class="field-error" id="response-time-error"></span>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn-primary" id="calculate-btn">
+          Bereken mijn DealLeak <span class="btn-arrow">→</span>
+        </button>
+      </form>
+    </section>
+
+    <!-- Results (hidden until form is submitted) -->
+    <section id="results" class="results hidden" aria-live="polite">
+
+      <!-- Gemiste omzet -->
+      <div class="card result-card highlight-card">
+        <div class="result-header">
+          <span class="result-icon">💸</span>
+          <h2 class="card-title">Gemiste omzet</h2>
+        </div>
+        <div class="missed-revenue-grid">
+          <div class="revenue-block">
+            <span class="revenue-label">Per maand</span>
+            <span class="revenue-value" id="missed-monthly">€0</span>
+          </div>
+          <div class="revenue-block">
+            <span class="revenue-label">Per jaar</span>
+            <span class="revenue-value secondary" id="missed-yearly">€0</span>
+          </div>
+        </div>
+        <p class="revenue-breakdown" id="revenue-breakdown"></p>
+      </div>
+
+      <!-- Risicozones -->
+      <div class="card result-card">
+        <div class="result-header">
+          <span class="result-icon">⚠️</span>
+          <h2 class="card-title">Risicozones</h2>
+        </div>
+        <div class="risk-list" id="risk-list"></div>
+      </div>
+
+      <!-- Quick wins -->
+      <div class="card result-card">
+        <div class="result-header">
+          <span class="result-icon">🚀</span>
+          <h2 class="card-title">Quick wins</h2>
+        </div>
+        <ul class="quick-wins-list" id="quick-wins-list"></ul>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 DealLeak Scanner — Meer omzet uit bestaande leads</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

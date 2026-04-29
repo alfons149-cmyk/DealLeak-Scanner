@@ -1,0 +1,323 @@
+/* ============================================================
+   DealLeak Scanner — stylesheet
+   ============================================================ */
+
+/* ---------- Reset & base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --brand:        #4f46e5;
+  --brand-dark:   #3730a3;
+  --brand-light:  #ede9fe;
+  --success:      #16a34a;
+  --warning:      #d97706;
+  --danger:       #dc2626;
+  --surface:      #ffffff;
+  --surface-2:    #f8fafc;
+  --border:       #e2e8f0;
+  --text:         #0f172a;
+  --text-muted:   #64748b;
+  --radius:       12px;
+  --shadow:       0 2px 12px rgba(0,0,0,.08);
+  --shadow-lg:    0 8px 32px rgba(0,0,0,.12);
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--surface-2);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+main.container { flex: 1; padding-bottom: 3rem; }
+
+/* ---------- Header ---------- */
+.site-header {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+  color: #fff;
+  padding: 2.5rem 0 2rem;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: .4rem;
+}
+
+.logo-icon { font-size: 1.8rem; }
+
+.tagline {
+  opacity: .85;
+  font-size: .95rem;
+  margin-top: .25rem;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+/* ---------- Form ---------- */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+@media (max-width: 540px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+.form-group { display: flex; flex-direction: column; gap: .4rem; }
+
+.form-group label {
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color .2s;
+  background: var(--surface);
+}
+
+.input-wrapper:focus-within { border-color: var(--brand); }
+.input-wrapper.error { border-color: var(--danger); }
+
+.input-wrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: .65rem .75rem;
+  font-size: 1rem;
+  color: var(--text);
+  background: transparent;
+  min-width: 0;
+}
+
+/* Remove number spinners */
+.input-wrapper input::-webkit-outer-spin-button,
+.input-wrapper input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.input-wrapper input[type=number] { -moz-appearance: textfield; }
+
+.input-prefix,
+.input-suffix {
+  padding: .65rem .7rem;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-size: .9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.input-prefix { border-right: 1px solid var(--border); }
+.input-suffix { border-left: 1px solid var(--border); }
+
+.field-error {
+  font-size: .8rem;
+  color: var(--danger);
+  min-height: 1rem;
+}
+
+/* ---------- Button ---------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: .85rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s, transform .1s, box-shadow .2s;
+  box-shadow: 0 4px 14px rgba(79,70,229,.35);
+}
+
+.btn-primary:hover {
+  background: var(--brand-dark);
+  box-shadow: 0 6px 20px rgba(79,70,229,.45);
+}
+
+.btn-primary:active { transform: translateY(1px); }
+
+.btn-arrow { font-size: 1.1rem; }
+
+/* ---------- Results ---------- */
+.results { animation: fadeUp .4s ease both; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hidden { display: none !important; }
+
+.result-header {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: 1.25rem;
+}
+
+.result-icon { font-size: 1.4rem; line-height: 1; }
+
+.result-header .card-title { margin-bottom: 0; }
+
+/* Highlight card */
+.highlight-card {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  color: #fff;
+  border-color: transparent;
+}
+
+.highlight-card .card-title { color: #c7d2fe; }
+
+/* Missed revenue grid */
+.missed-revenue-grid {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.revenue-block { display: flex; flex-direction: column; gap: .2rem; }
+
+.revenue-label {
+  font-size: .8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  opacity: .7;
+}
+
+.revenue-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+}
+
+.revenue-value.secondary { color: #a5b4fc; font-size: 1.7rem; }
+
+.revenue-breakdown {
+  font-size: .85rem;
+  opacity: .75;
+  margin-top: .5rem;
+  line-height: 1.5;
+}
+
+/* ---------- Risk list ---------- */
+.risk-list { display: flex; flex-direction: column; gap: .75rem; }
+
+.risk-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: .85rem 1rem;
+  border-radius: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+
+.risk-badge {
+  flex-shrink: 0;
+  width: 90px;
+  text-align: center;
+  padding: .25rem .6rem;
+  border-radius: 6px;
+  font-size: .75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.risk-badge.high   { background: #fee2e2; color: var(--danger); }
+.risk-badge.medium { background: #fef3c7; color: var(--warning); }
+.risk-badge.low    { background: #dcfce7; color: var(--success); }
+
+.risk-description { font-size: .9rem; color: var(--text); }
+
+.risk-detail { font-size: .8rem; color: var(--text-muted); margin-top: .15rem; }
+
+/* ---------- Quick wins ---------- */
+.quick-wins-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.quick-win-item {
+  display: flex;
+  gap: .85rem;
+  align-items: flex-start;
+  padding: .9rem 1rem;
+  border-radius: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--brand);
+}
+
+.win-icon { font-size: 1.25rem; flex-shrink: 0; line-height: 1.4; }
+
+.win-text { font-size: .9rem; color: var(--text); }
+
+.win-gain {
+  display: inline-block;
+  margin-top: .3rem;
+  font-weight: 700;
+  color: var(--success);
+  font-size: .85rem;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 0;
+  text-align: center;
+  font-size: .82rem;
+  color: var(--text-muted);
+  margin-top: auto;
+}
